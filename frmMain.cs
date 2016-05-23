@@ -25,16 +25,18 @@ public partial class frmMain : Form
 
     private void btnConvertFile_Click(object sender, EventArgs e)
     {
-        string pathFileNameText = Path.Combine(Application.StartupPath, "ZipCodes_1990Census_sortedAscending.txt");
+        string pathFileNameText = Path.Combine(Application.StartupPath, 
+            "ZipCodes_1990Census_sortedAscending.txt");
         string input;
 
         if (File.Exists(pathFileNameText) == false)
         {
-            MessageBox.Show(pathFileNameText + " does not exist", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(pathFileNameText + " does not exist", 
+                Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
 
-            using (StreamReader sr = new StreamReader(pathFileNameText))
+        using (StreamReader sr = new StreamReader(pathFileNameText))
         {
             input = sr.ReadLine();
             while (input != null)
@@ -90,11 +92,12 @@ public partial class frmMain : Form
         // Calculating the distance between the two zip codes
 
         double radiusOfEarth = 6371.00;
-        double dLat = zipCode2.Latitude - zipCode1.Latitude;
-        double dLon = zipCode2.Longitude - zipCode1.Longitude;
-
+        double dLat = (zipCode2.Latitude - zipCode1.Latitude) * Math.PI / 180;
+        double dLon = (zipCode2.Longitude - zipCode1.Longitude) * Math.PI / 180;
+        
         double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) 
-            + Math.Cos(zipCode1.Latitude) * Math.Cos(zipCode2.Latitude) * Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+            + Math.Cos(zipCode1.Latitude * Math.PI / 180) * Math.Cos(zipCode2.Latitude * Math.PI / 180) 
+            * Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
         double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
         double distanceInKm = radiusOfEarth * c;
         double distanceInMiles = 0.621371 * distanceInKm;
@@ -105,7 +108,8 @@ public partial class frmMain : Form
 
     private clsZipCode getZipCodeInformationAtRecordNumber(string zipCodeToSearch)
     {
-        string pathFileNameBinary = Path.Combine(Application.StartupPath, "ZipCodes_1990Census_sortedAscending.bin");
+        string pathFileNameBinary = Path.Combine(Application.StartupPath, 
+            "ZipCodes_1990Census_sortedAscending.bin");
         const int recordLength = 109;
 
         clsZipCode zipCode = new clsZipCode();
