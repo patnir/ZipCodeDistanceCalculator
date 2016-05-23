@@ -6,8 +6,8 @@ public class clsZipCode
     public string ZipCode;
     public string State;
     public string City;
-    public float Latitude;
-    public float Longitude;
+    public double Latitude;
+    public double Longitude;
 
     public void Deserialize(string information)
     {
@@ -20,22 +20,22 @@ public class clsZipCode
         Longitude = float.Parse(parsedInformation[4]);
     }
 
-    public string Serialize()
+    public void BinaryDeserialize(BinaryReader br)
     {
-        return ZipCode + "\t"
-            + State + "\t"
-            + City + "\t"
-            + Latitude.ToString() + "\t"
-            + Longitude.ToString();
+        ZipCode = br.ReadString().Trim();
+        State = br.ReadString().Trim();
+        City = br.ReadString().Trim();
+        Latitude = br.ReadDouble();
+        Longitude = br.ReadDouble();
     }
 
     public void BinarySerialize(BinaryWriter bw)
     {
-        bw.Write(ZipCode);
-        bw.Write(State);
-        bw.Write(City);
-        bw.Write(Latitude);
-        bw.Write(Longitude);
+        bw.Write(ZipCode.PadRight(30)); // 31
+        bw.Write(State.PadRight(30)); // 31
+        bw.Write(City.PadRight(30)); // 31
+        bw.Write(Latitude); // 8
+        bw.Write(Longitude); // 8
     }
 
 }

@@ -17,7 +17,7 @@
             this.txtFirstCity = new System.Windows.Forms.TextBox();
             this.txtSecondCity = new System.Windows.Forms.TextBox();
             this.txtFirstState = new System.Windows.Forms.TextBox();
-            this.txtState = new System.Windows.Forms.TextBox();
+            this.txtSecondState = new System.Windows.Forms.TextBox();
             this.txtDistanceInKM = new System.Windows.Forms.TextBox();
             this.txtDistanceInMiles = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -147,14 +147,14 @@
             this.txtFirstState.TabIndex = 12;
             this.txtFirstState.TabStop = false;
             // 
-            // txtState
+            // txtSecondState
             // 
-            this.txtState.Location = new System.Drawing.Point(389, 260);
-            this.txtState.Name = "txtState";
-            this.txtState.ReadOnly = true;
-            this.txtState.Size = new System.Drawing.Size(71, 20);
-            this.txtState.TabIndex = 13;
-            this.txtState.TabStop = false;
+            this.txtSecondState.Location = new System.Drawing.Point(389, 260);
+            this.txtSecondState.Name = "txtSecondState";
+            this.txtSecondState.ReadOnly = true;
+            this.txtSecondState.Size = new System.Drawing.Size(71, 20);
+            this.txtSecondState.TabIndex = 13;
+            this.txtSecondState.TabStop = false;
             // 
             // txtDistanceInKM
             // 
@@ -234,7 +234,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtDistanceInMiles);
             this.Controls.Add(this.txtDistanceInKM);
-            this.Controls.Add(this.txtState);
+            this.Controls.Add(this.txtSecondState);
             this.Controls.Add(this.txtFirstState);
             this.Controls.Add(this.txtSecondCity);
             this.Controls.Add(this.txtFirstCity);
@@ -249,6 +249,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,7 +269,7 @@
     private System.Windows.Forms.TextBox txtFirstCity;
     private System.Windows.Forms.TextBox txtSecondCity;
     private System.Windows.Forms.TextBox txtFirstState;
-    private System.Windows.Forms.TextBox txtState;
+    private System.Windows.Forms.TextBox txtSecondState;
     private System.Windows.Forms.TextBox txtDistanceInKM;
     private System.Windows.Forms.TextBox txtDistanceInMiles;
     private System.Windows.Forms.Button btnClose;
